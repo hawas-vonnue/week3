@@ -60,7 +60,19 @@ console.log("object keys:");
 console.log(Object.keys(mergedObject));
 console.log("values of the object");
 console.log(Object.values(mergedObject));
-const addressClone = structuredClone(address);
-addressClone.city='kozhikode';
-console.log(address);
-console.log(addressClone);
+function deepClone(obj) {
+  if (obj === null || typeof obj !== "object") return obj;
+  if (Array.isArray(obj)) return obj.map(deepClone);
+  const clone = {};
+  for(const key in obj){
+    if(obj.hasOwnProperty(key)){
+        //it can work only in flat object if deepClone function call is removed
+        clone[key]=deepClone(obj[key]);
+    }
+  }
+  return clone;
+}
+const mergedObjectClone = deepClone(mergedObject);
+mergedObjectClone.fullName.firstName = "kozhikode";
+console.log(mergedObject);
+console.log(mergedObjectClone);
