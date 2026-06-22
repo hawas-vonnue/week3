@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto 1fr 1fr 1fr;
+  gap: 1em;
+}
+header {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+header img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-left: 0.3em;
+  position: relative;
+}
+h3 {
+  text-align: center;
+}
+.featured .box {
+  display: flex;
+  gap: 0.3em;
+}
+.box .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.content .tags span {
+  border: solid;
+  border-radius: 15%;
+  padding: 0.3em;
+}
+.content .tags {
+  display: flex;
+  gap: 0.5em;
+}
+.header2 {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+.nonFeatured {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-left: 0.4em;
+  margin-bottom: 1em;
+  position: relative;
+}
+.featured .image {
+  margin-left: 0.3em;
+}
+.image {
+  display: flex;
+  justify-content: center;
+}
+.overlay {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 1em;
+}
+.overlay a {
+  text-decoration: none;
+  color: white;
+  border: solid white;
+  padding: 0.2em;
+}
+.featured:hover .overlay {
+  opacity: 100;
+  transform: scale(1.5);
+  transition: all 1s ease-in-out;
+}
+.featured:hover {
+  /* no need to hide content when background color is black */
+  background-color: black;
+}
+/* .featured:hover .content {
+  opacity: 0;
+} */
+.featured:hover .image {
+  display: none;
+}
+.nonFeatured:hover .overlay {
+  opacity: 100;
+  transform: scale(1.5);
+  transition: all 1s ease-in-out;
+}
+.nonFeatured:hover {
+  background-color: black;
+}
+.nonFeatured:hover .image {
+  display: none;
+}
