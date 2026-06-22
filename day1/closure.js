@@ -88,17 +88,19 @@ function createRateLimiter(fn, maxCalls, windowMs) {
     let numberOfFunctionCallInWindow = timeOfFunctionCalls.filter((time) => {
       return Date.now() - time < windowMs;
     });
-    console.log(numberOfFunctionCallInWindow);
+    // console.log(numberOfFunctionCallInWindow);
     if (numberOfFunctionCallInWindow.length < maxCalls) {
       timeOfFunctionCalls.push(Date.now());
-      console.log("timeOfFunctionCalls:" + timeOfFunctionCalls);
+    //   console.log("timeOfFunctionCalls:" + timeOfFunctionCalls);
       let value = fn.apply(this, args);
       return value;
     } else throw new Error("Exceeded maximum limit");
   };
 }
 const function1 = createRateLimiter(add, 2, 6000);
-function1(1, 2);
-function1(2, 3);
-setTimeout(function1, 8000);
-
+console.log(function1(1, 2));
+console.log(function1(2, 3));
+setTimeout(() => {
+  console.log(function1(5, 6));
+  console.log(function1(7, 8));
+}, 6000);
