@@ -51,6 +51,6 @@ function test(number1, number2, number3, ...numbers) {
   console.log(numbers);
 }
 test(1, 2, 3, 4, 5, 6, 7);
-//arrow function cant use arguments
+//using arguments inside a arrow function shows arguments of enclosing scope
 const arrow = (para1, para2) => console.log(arguments);
 arrow(54, 45);
