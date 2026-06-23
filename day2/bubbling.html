@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubbling example</title>
+    <style>
+      .first-level {
+        width: 400px;
+        height: 400px;
+        background-color: red;
+      }
+      .second-level {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+      .third-level {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+      .same-element {
+        width: 400px;
+        height: 400px;
+        background-color: black;
+      }
+      main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input{
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="first-level">
+        <div class="second-level">
+          <div class="third-level"></div>
+        </div>
+      </div>
+      <h2>Stop immediate propagation</h2>
+      <div class="same-element"></div>
+      <h2>Prevent Default</h2>
+      <form action="submit">
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+        <input type="submit" />
+      </form>
+      <a href="#">Test link</a>
+    </main>
+    <script src="./bubbling.js"></script>
+  </body>
+</html>
