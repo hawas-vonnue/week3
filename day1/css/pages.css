@@ -19,6 +19,22 @@
   .team .container {
     grid-template-columns: 1fr 1fr;
   }
+
+  header nav {
+    display: none;
+  }
+  #menu {
+    display: inline;
+    margin: 8px;
+  }
+  header{
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .drawer.open{
+    display: flex;
+  }
 }
 
 @media screen and (width<=480px) {
