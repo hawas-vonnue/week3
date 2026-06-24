@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CSS only interactive Components</title>
+    <link rel="stylesheet" href="components.css" />
+  </head>
+  <body>
+    <main>
+      <h1>CSS only interactive Components</h1>
+      <h2>CSS only accordion</h2>
+      <div class="accordion">
+        <div>
+          <label for="checkbox">> Click here</label>
+          <input type="checkbox" id="checkbox" aria-expanded="false" />
+        </div>
+        <div class="content">this is content.</div>
+      </div>
+      <h2>Tab component</h2>
+      <h3>Test</h3>
+      <div class="tabs">
+        <label for="tab1" id="label1">Tab 1</label>
+        <input
+          type="radio"
+          name="tab"
+          id="tab1"
+          class="tab"
+          aria-expanded="false"
+        />
+        <div class="tab1Content">This is tab 1 content</div>
+        <label for="tab2" id="label2">Tab 2</label>
+        <input
+          type="radio"
+          name="tab"
+          id="tab2"
+          class="tab"
+          aria-expanded="false"
+        />
+        <div class="tab2Content">This is tab 2 content</div>
+      </div>
+      <h2>Star rating</h2>
+      <div class="rating">
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+      </div>
+    </main>
+    <script src="./components.js"></script>
+  </body>
+</html>
