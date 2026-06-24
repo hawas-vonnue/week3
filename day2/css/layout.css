@@ -2,7 +2,7 @@ header {
   text-align: center;
   background-color: var(--color-secondary);
   position: sticky;
-  top: 0;
+  top: 4px;
   z-index: 100;
   display: flex;
   justify-content: center;

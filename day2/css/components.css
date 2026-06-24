@@ -409,10 +409,27 @@ span.highlight {
   background-color: yellow;
 }
 
-.not-found{
+.not-found {
   width: 400px;
   height: 400px;
   font-size: 46px;
   color: red;
+  display: none;
+}
+
+.reading-progress-bar {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 4px;
+  width: 100%;
+  position: fixed;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 20;
   display: none;
 }
