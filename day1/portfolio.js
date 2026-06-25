@@ -23,6 +23,7 @@ console.log(header.firstChild);
 console.log(header.lastChild);
 const box = document.querySelector(".box");
 console.log(box.nextElementSibling);
+
 function addCard(title, body, imageUrl, id) {
   let card = document.createElement("div");
   card.id = id;
@@ -50,6 +51,7 @@ addCard(
   "https://loremflickr.com/320/240",
   "card2",
 );
+
 function removeCard(id) {
   document.getElementById(id).remove();
   console.log("element with id " + id + " removed");
@@ -61,6 +63,7 @@ addCard(
   "https://loremflickr.com/320/240",
   "card3",
 );
+
 function clearAllCards() {
   let cards = document.querySelectorAll(".card");
   for (card of cards) {
