@@ -87,7 +87,7 @@ overlay.addEventListener("touchend", (event) => {
   let endX = event.changedTouches[0].screenX;
   let difference = endX - startX;
   if (Math.abs(difference) > thresholdX) {
-    if (diff > 0) {
+    if (difference > 0) {
       moveToPrev();
     } else {
       moveToNext();
