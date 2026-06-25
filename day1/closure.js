@@ -12,6 +12,7 @@ function createCounter() {
   function reset() {
     count = 0;
   }
+
   return {
     increment,
     decrement,
@@ -39,19 +40,20 @@ console.log(counter.getCount());
 const memoize = (func) => {
   const map = new Map();
   return (...args) => {
-    // console.log(map);
     let key = args.join(",");
     if (!map.has(key)) {
       console.log("adding to cache");
       let value = func.apply(this, args);
       map.set(key, value);
     } else console.log("fetching from cache");
+
     return map.get(key);
   };
 };
 //fibonacci function
 function fibonacci(n) {
   if (n < 2) return n;
+
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 // console.log("fibonacci:"+fibonacci(4));
@@ -72,6 +74,7 @@ const once = (func) => {
       count++;
       return value;
     }
+
     return value;
   };
 };
@@ -84,15 +87,15 @@ console.log(addOnce(2, 3));
 //create rate limiter
 function createRateLimiter(fn, maxCalls, windowMs) {
   let timeOfFunctionCalls = [];
+
   return (...args) => {
     let numberOfFunctionCallInWindow = timeOfFunctionCalls.filter((time) => {
       return Date.now() - time < windowMs;
     });
-    // console.log(numberOfFunctionCallInWindow);
     if (numberOfFunctionCallInWindow.length < maxCalls) {
       timeOfFunctionCalls.push(Date.now());
-    //   console.log("timeOfFunctionCalls:" + timeOfFunctionCalls);
       let value = fn.apply(this, args);
+
       return value;
     } else throw new Error("Exceeded maximum limit");
   };
