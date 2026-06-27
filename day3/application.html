@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Application Form</title>
+  </head>
+  <body>
+    <main>
+      <h1>Application Form</h1>
+      <ol>
+        <li aria-current="step">
+          <a href="#step1">step1</a>
+          <br />
+          <br />
+        </li>
+        <li>
+          <a href="#step2">step2</a>
+          <br />
+          <br />
+        </li>
+        <li><a href="#step3">step 3</a></li>
+      </ol>
+      <form novalidate>
+        <fieldset id="step1">
+          <legend>step 1:personal information</legend>
+          <label for="name">Name:*</label>
+          <input type="text" id="name" name="name" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="email">Email:*</label>
+          <input type="email" id="email" name="email" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="password">password:*</label>
+          <input type="password" name="password" id="password" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="rePassword">re enter password:*</label>
+          <input type="password" id="rePassword" name="rePassword" />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="phone">Phone:*</label>
+          <input type="tel" id="phone" name="phone" />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="linkedin">Linkedin url:*</label>
+          <input type="url" id="linkedin" name="linkedin" required />
+          <span class="field-error"></span>
+        </fieldset>
+        <fieldset id="step2">
+          <legend>step 2:work Experience</legend>
+          <label for="role">Current role:*</label>
+          <input type="text" id="role" name="role" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="company">Current company:*</label>
+          <input type="text" id="company" name="company" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="experience">years of experience in number:*</label>
+          <input type="number" id="experience" name="experience" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="keyAchievements"
+            >Enter your key achievements(max 500 characters)</label
+          >
+          <br />
+          <textarea name="keyAchievements" id="keyAchievements"></textarea>
+          <span class="field-error"></span>
+        </fieldset>
+        <fieldset id="step3">
+          <legend>step 3:documents</legend>
+          <label for="coverLetter">upload cover letter:*</label>
+          <input
+            type="file"
+            accept=".pdf,.docx"
+            id="coverLetter"
+            name="coverletter"
+            required
+          />
+          <span class="field-error"></span>
+          <br />
+          <br />
+          <label for="portfolio">portfolio url:*</label>
+          <input type="url" id="portfolio" name="url" required />
+          <span class="field-error"></span>
+          <br />
+          <br />
+        </fieldset>
+        <input type="submit" />
+      </form>
+    </main>
+    <script src="./formvalidator.js"></script>
+  </body>
+</html>
