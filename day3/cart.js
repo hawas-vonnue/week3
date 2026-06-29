@@ -40,6 +40,7 @@ class Stack {
     }
   }
 }
+
 class Cart {
   constructor(stack, ...items) {
     this.items = items.flat(1);
@@ -47,12 +48,14 @@ class Cart {
     this.stack = stack;
     listener.notifyObservers(this.items);
   }
+
   addItem(item) {
     let newCart = structuredClone(this.items);
     newCart.push(item);
     console.log("newcart", newCart);
     return new Cart(this.stack, newCart);
   }
+
   removeItem(itemId) {
     let newCart = structuredClone(this.items);
     return new Cart(
@@ -60,6 +63,7 @@ class Cart {
       newCart.filter((item) => item.id != itemId),
     );
   }
+
   updateQuantity(itemId, quantity) {
     let newCart = structuredClone(this.items);
     for (let item of newCart) {
@@ -70,6 +74,7 @@ class Cart {
     }
     return new Cart(this.stack, newCart);
   }
+
   getTotal() {
     let total = 0;
     for (let item of this.items) {
@@ -77,11 +82,13 @@ class Cart {
     }
     return total;
   }
+
   applyCoupon(coupon) {
     let total = this.getTotal();
     let newValue = total - (total * coupon) / 100;
     return newValue;
   }
+
   undo() {
     let stackArray = this.stack["arr"];
     //to remove the current state from stack
