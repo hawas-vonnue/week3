@@ -109,3 +109,6 @@
 .hidden {
   display: none !important;
 }
+.liked {
+  fill: black;
+}

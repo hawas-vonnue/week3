@@ -1,6 +1,5 @@
-let parentCount = 0;
-let childCount = 0;
-let blog1 = [];
+let count = 0;
+let blogs = {};
 let map = new Map();
 
 class Comment {
@@ -8,6 +7,7 @@ class Comment {
     this.id = id;
     this.text = text;
     this.innerComments = [];
+    this.isLiked = false;
   }
 }
 const commentSections = document.querySelectorAll(".card .commentSection");
@@ -19,21 +19,26 @@ addCommentButtons.forEach((addCommentButton) => {
     const commentContainer = event.target.parentElement.previousElementSibling;
     const input = event.target.previousElementSibling;
     console.log(input.value);
-    let comment = createComment(input.value, parentCount);
-    parentCount++;
+    let comment = createComment(input.value, count);
+    count++;
     commentContainer.appendChild(comment);
     let obj = new Comment(comment.id, input.value);
     map.set(comment.id, obj);
-    blog1.push(obj);
+    let blogId = event.target.parentElement.parentElement.parentElement.id;
+    if (!(blogId in blogs)) {
+      let arr = [];
+      arr.push(obj);
+      blogs[blogId] = arr;
+    } else blogs[blogId].push(obj);
     input.value = "";
-    upateLocalStorage();
+    updateLocalStorage();
   });
 });
 
-function upateLocalStorage() {
-  blog1.forEach((element) => {
-    localStorage.setItem(element.id, JSON.stringify(element));
-  });
+function updateLocalStorage() {
+  for (let key of Object.keys(blogs)) {
+    localStorage.setItem(key, JSON.stringify(blogs[key]));
+  }
 }
 const commentContainers = document.querySelectorAll(".comments");
 commentContainers.forEach((commentContainer) => {
@@ -41,8 +46,8 @@ commentContainers.forEach((commentContainer) => {
     if (event.target.className === "send") {
       const parent = event.target.parentElement.parentElement;
       let value = event.target.previousElementSibling.value;
-      const comment = createComment(value, childCount);
-      childCount++;
+      const comment = createComment(value, count);
+      count++;
       parent.appendChild(comment);
       event.target.previousElementSibling.value = "";
       event.target.parentElement.classList.add("hidden");
@@ -50,12 +55,23 @@ commentContainers.forEach((commentContainer) => {
       let obj = new Comment(comment.id, value);
       map.set(comment.id, obj);
       parentObj.innerComments.push(obj);
-      upateLocalStorage();
-      console.log(map);
+      updateLocalStorage();
     }
     if (event.target.className === "reply") {
       const replyForm = event.target.parentElement.nextElementSibling;
       replyForm.classList.toggle("hidden");
+    }
+    if (event.target.className === "like") {
+      let svg;
+      svg = event.target.querySelector("svg");
+      svg.classList.toggle("liked");
+      const comment = event.target.parentElement.parentElement;
+      const commentObj = map.get(comment.id);
+      if (commentObj.isLiked === false) {
+        commentObj.isLiked = true;
+      } else commentObj.isLiked = false;
+      console.log("commentObj", commentObj);
+      updateLocalStorage();
     }
   });
 });
@@ -65,6 +81,7 @@ function createComment(text, id) {
   comment.textContent = text;
   comment.classList.add("comment");
   let likeButton = document.createElement("button");
+  likeButton.classList.add("like");
   likeButton.innerHTML = `<svg
                           xmlns="xmlw3.org/2000/svgxml"
                           viewBox="0 0 24 24"
@@ -102,10 +119,16 @@ function createComment(text, id) {
 
 function createNestedComment(obj) {
   if (obj.innerComments.length === 0) {
-    childCount = obj.id;
-    childCount++;
+    count = obj.id;
+    count++;
     map.set(obj.id, obj);
-    return createComment(obj.text, obj.id);
+    let comment = createComment(obj.text, obj.id);
+    if (obj.isLiked === true) {
+      const svg = comment.querySelector(".like svg");
+      svg.classList.add("liked");
+    }
+
+    return comment;
   }
   let parentComment = createComment(obj.text, obj.id);
   obj.innerComments.forEach((innerComment) => {
@@ -113,25 +136,26 @@ function createNestedComment(obj) {
     parentComment.appendChild(child);
   });
   map.set(obj.id, obj);
+  if (obj.isLiked === true) {
+    const svg = parentComment.querySelector(".like svg");
+    svg.classList.add("liked");
+  }
+
   return parentComment;
 }
 let c = 0;
-while (true) {
-  if (localStorage.getItem(c) === null) break;
-  let obj = JSON.parse(localStorage.getItem(c));
-  c++;
-  // let comment = createComment(obj.text, obj.id);
-  // // if (obj.innerComments.length !== 0) {
-  // //   obj.innerComments.forEach((innerComment) => {
-  // //     let childComment = createComment(innerComment.text, innerComment.id);
-  // //     comment.appendChild(childComment);
-  // //     count = innerComment.id;
-  // //   });
-  // // }
-  blog1.push(obj);
-  parentCount = obj.id;
-  parentCount++;
-  let comment = createNestedComment(obj);
-  const comments = document.querySelector(".comments");
-  comments.appendChild(comment);
-}
+
+const totalBlogs = document.querySelectorAll(".card");
+totalBlogs.forEach((blog) => {
+  if (localStorage.getItem(blog.id) !== null) {
+    let arr = [];
+    blogs[blog.id] = arr;
+    let commentArray = JSON.parse(localStorage.getItem(blog.id));
+    commentArray.forEach((comment) => {
+      let commentElement = createNestedComment(comment);
+      blogs[blog.id].push(comment);
+      let comments = blog.querySelector(".comments");
+      comments.appendChild(commentElement);
+    });
+  }
+});
