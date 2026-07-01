@@ -33,8 +33,6 @@ async function fetchData(url) {
   try {
     const response = await fetch(url);
     const responseJson = await response.json();
-    console.log(response);
-    console.log(responseJson);
     if (!response.ok) {
       throw new Error("error in fetching");
     }
@@ -55,7 +53,7 @@ function updateWeather(url, city) {
       let windSpeed;
       let weatherDescription;
       if (sessionStorage.getItem(city) !== null) {
-        let sessionObject = JSON.parse(sessionStorage.getItem("sessionObject"));
+        let sessionObject = JSON.parse(sessionStorage.getItem(city));
         if (sessionObject.expiresAt - Date.now() > 0) {
           temp = sessionObject.body.temperature;
           windSpeed = sessionObject.body.windSpeed;
@@ -100,17 +98,17 @@ function fetchCity(city) {
   fetchData(url).then(
     (response) => {
       try {
-          if (!response.results) {
-            throw new Error("failed in  finding city");
-          }
-          let latitude = response.results[0].latitude;
-          let longitude = response.results[0].longitude;
-          let weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code`;
-          weatherDiv.classList.add("skelton");
-          setTimeout(() => {
-            updateWeather(weatherUrl, city);
-            weatherDiv.classList.remove("skelton");
-          }, 300);
+        if (!response.results) {
+          throw new Error("failed in  finding city");
+        }
+        let latitude = response.results[0].latitude;
+        let longitude = response.results[0].longitude;
+        let weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code`;
+        weatherDiv.classList.add("skelton");
+        setTimeout(() => {
+          updateWeather(weatherUrl, city);
+          weatherDiv.classList.remove("skelton");
+        }, 300);
       } catch (error) {
         alert(error);
       }
