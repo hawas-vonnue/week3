@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather forecast</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      h1 {
+        text-align: center;
+        font-size: 64px;
+      }
+      .search {
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      input {
+        height: 56px;
+        width: 350px;
+      }
+      .search label {
+        display: none;
+      }
+      .search button{
+        width: 100px;
+        height: 56px;
+      }
+      .weatherContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .weather {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 10px;
+        width: 450px;
+        height: 450px;
+        font-size: 48px;
+        border: solid 0.1px;
+      }
+      .skelton {
+        background: linear-gradient(
+          -45deg,
+          #bebebe 40%,
+          #666666 50%,
+          #7a7a7a 60%
+        );
+        background-size: 300%;
+        background-position-x: 100%;
+        animation: skelton 1s infinite linear;
+        animation-direction: alternate;
+      }
+      @keyframes skelton {
+        to {
+          background-position-x: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Weather forecast</h1>
+      <div class="search">
+        <label for="city">city:</label>
+        <input type="search" id="city" placeholder="Type city name here" />
+        <button id="search">Search</button>
+      </div>
+      <div class="weatherContainer">
+        <div class="weather">
+          <span>Temperature: <span id="temperature"></span></span>
+          <span>Wind Speed: <span id="windSpeed"></span></span>
+          <span>
+            weather description:
+            <span id="weatherDescription"></span>
+          </span>
+        </div>
+      </div>
+    </main>
+    <script src="./weather.js"></script>
+  </body>
+</html>
