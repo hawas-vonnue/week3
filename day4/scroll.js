@@ -24,9 +24,6 @@ function onLoad() {
     return;
   }
   let url = `https://jsonplaceholder.typicode.com/posts?_start=${N}&_limit=10`;
-  if (N === 30) {
-    url = `https://jsonplaceholder.typicode.com/post?_start=${N}&_limit=10`;
-  }
   fetchPosts(url).then(
     (response) => {
       for (let i = 0; i < 10; i++) {
@@ -87,7 +84,6 @@ const sentinelElement = document.querySelector(".sentinel");
 observer.observe(sentinelElement);
 retryButton.addEventListener("click", () => {
   spinnerContainer.classList.remove("hidden");
-  N = N + 10;
   onLoad();
   sentinelElement.classList.remove("hidden");
 });
