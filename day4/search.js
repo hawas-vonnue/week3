@@ -35,6 +35,7 @@ searchInput.addEventListener("keyup", (event) => {
   clearTimeout(timer);
   timer = setTimeout(() => {
     search();
+    let searchValue = document.querySelector(".search input").value.trim();
     history.pushState(
       { innerHtml: serviceCardsContainer.innerHTML, value: searchValue },
       "",
@@ -46,6 +47,7 @@ searchInput.addEventListener("input", (event) => {
   clearTimeout(timer);
   timer = setTimeout(() => {
     search();
+    let searchValue = document.querySelector(".search input").value.trim();
     history.pushState(
       { innerHtml: serviceCardsContainer.innerHTML, value: searchValue },
       "",
@@ -61,6 +63,7 @@ window.addEventListener("popstate", (event) => {
 });
 let params = new URLSearchParams(document.location.search);
 let searchValue = params.get("value");
+console.log(searchValue);
 if (searchValue) {
   document.querySelector(".search input").value = searchValue;
   search();
