@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinite scroll blog feed</title>
+    <style>
+      .hidden {
+        display: none !important ;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+      }
+      .feed {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .post {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: solid;
+        padding: 4px;
+        height: 150px;
+      }
+      .top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        font-size: 36px;
+      }
+      .userId {
+        align-self: flex-end;
+      }
+      .body {
+        align-self: center;
+      }
+      .spinnerContainer {
+        display: flex;
+        justify-content: center;
+        margin: 4px;
+      }
+      .end {
+        text-align: center;
+        font-size: 36px;
+      }
+      .spinner {
+        border: 4px solid white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border-bottom-color: #ff3d00;
+        display: inline-block;
+        animation: rotate 1s linear infinite;
+      }
+      .retryButton {
+        margin: 4px;
+        align-self: center;
+      }
+      .retryButton img {
+        width: 40px;
+        height: 40px;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="feed"></div>
+      <div class="spinnerContainer hidden">
+        <div class="spinner"></div>
+      </div>
+      <button class="retryButton hidden">
+        <img
+          src="https://img.icons8.com/?size=100&id=6JoGw9ukA9KW&format=png&color=000000"
+          alt="retry logo"
+        />
+      </button>
+      <div class="end"></div>
+      <div class="sentinel"></div>
+    </main>
+    <script src="./scroll.js"></script>
+  </body>
+</html>
