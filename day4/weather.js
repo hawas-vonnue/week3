@@ -59,7 +59,7 @@ function updateWeather(url, city) {
           windSpeed = sessionObject.body.windSpeed;
           weatherDescription = sessionObject.body.description;
         } else {
-          sessionStorage.removeItem("sessionObject");
+          sessionStorage.removeItem(city);
           temp = response.current.temperature_2m;
           windSpeed = response.current.wind_speed_10m;
           weatherDescription = weatherCodeLookup[response.current.weather_code];
