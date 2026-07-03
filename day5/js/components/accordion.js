@@ -1,4 +1,4 @@
-function accordion(button, content) {
+export function accordion(button, content) {
   button.addEventListener("click", () => {
     content.classList.toggle("open");
     content.style.overflow = "hidden";
