@@ -42,30 +42,34 @@
               <input
                 type="text"
                 id="name"
+                name="name"
                 placeholder="Name"
                 autocomplete="on"
-                required
               />
               <label for="name">Name:*</label>
+              <span class="errorMessage"></span>
             </div>
             <div class="field">
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Email"
                 autocomplete="on"
-                required
               />
               <label for="email">Email:*</label>
+              <span class="errorMessage"></span>
             </div>
             <div class="field">
               <input
                 type="tel"
                 id="phone"
+                name="phone"
                 placeholder="phone"
                 autocomplete="on"
               />
               <label for="phone">Phone:</label>
+              <span class="errorMessage"></span>
             </div>
             <div class="select-field">
               <label for="select">Department:</label>
@@ -77,14 +81,22 @@
               </select>
             </div>
             <div class="field">
-              <textarea id="message" placeholder="message" required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="message"
+              ></textarea>
               <label for="message">message:*</label>
+              <span class="errorMessage"></span>
             </div>
             <div class="checkbox-field">
               <input type="checkbox" id="newsLetter" />
               <label for="newsLetter">Send news letter</label>
             </div>
-            <input type="submit" />
+            <input id="submitButton" type="submit" />
+            <div class="spinnerContainer">
+              <div class="spinner"></div>
+            </div>
           </fieldset>
         </form>
       </div>

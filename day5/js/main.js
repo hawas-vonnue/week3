@@ -4,6 +4,9 @@ import { accordion } from "./components/accordion.js";
 import { lightBox } from "./components/lightbox.js";
 import { scrollAnimation } from "./components/scroll.js";
 import { progressBar } from "./components/progress.js";
+import { FormValidator } from "./components/validator.js";
+import { rules } from "./components/validator.js";
+import { showToast } from "./utils.js";
 
 window.onload = (event) => {
   let toggleElement = document.querySelector("#checkbox");
@@ -35,4 +38,32 @@ window.onload = (event) => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
   progressBar("index.html");
+  if (window.location.href.includes("contact.html")) {
+    const form = document.querySelector("form");
+    const formValidator = new FormValidator(form, rules);
+    const spinner = document.querySelector(".spinnerContainer");
+    const submitButton = document.querySelector("#submitButton");
+    form.addEventListener(
+      "blur",
+      (event) => {
+        event.preventDefault();
+        formValidator.validate(event.target);
+      },
+      true,
+    );
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitButton.style.display = "none";
+      spinner.style.display = "inline-block";
+      setTimeout(() => {
+        let flag = formValidator.validateAll();
+        submitButton.style.display = "revert";
+        spinner.style.display = "none";
+        if (flag === 1) showToast("Error", 7);
+        else showToast("success", 7);
+
+        form.reset();
+      }, 1500);
+    });
+  }
 };

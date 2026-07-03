@@ -19,6 +19,7 @@ export function debounce(fn, time = 300) {
 
 export function showToast(message, duration) {
   const showToastElement = document.createElement("div");
+  showToastElement.style.zIndex = "120";
   showToastElement.classList.add("showToast");
   const toastContainerElement = document.createElement("div");
   toastContainerElement.classList.add("toastContainer");
@@ -36,10 +37,9 @@ export function showToast(message, duration) {
   const styleElement = document.createElement("style");
   styleElement.textContent = `  .showToast {
         box-sizing: border-box;
-        position: absolute;
-        top: 30px;
+        position: fixed;
+        top: 60px;
         right: 30px;
-        width: 200px;
         border: solid;
         padding: 5px;
         display: flex;
@@ -68,6 +68,7 @@ export function showToast(message, duration) {
       }
       .showToast img {
         height: 30px;
+        width:30px;
       }
       @keyframes slideIn {
         0% {
@@ -97,4 +98,3 @@ export function showToast(message, duration) {
   head.appendChild(styleElement);
   document.body.prepend(showToastElement);
 }
-
