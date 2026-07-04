@@ -1,5 +1,6 @@
 import { createRetryButton, fetchJson, showToast } from "../utils.js";
 import { loadSkeletons, removeSkeletons } from "./skeleton.js";
+
 export function fetchPosts() {
   function createServiceCard(heading, message) {
     const serviceCard = document.createElement("div");
@@ -13,6 +14,7 @@ export function fetchPosts() {
 
     return serviceCard;
   }
+
   function loadPosts(url = "https://jsonplaceholder.typicode.com/posts") {
     loadSkeletons();
     const containerElement = document.querySelector(".container");
