@@ -14,6 +14,7 @@ export function renderRecentPosts() {
 
     return serviceCard;
   }
+  
   function loadRecentPosts(url = "https://jsonplaceholder.typicode.com/posts") {
     const containerElement = document.querySelector(".recentPosts");
     loadSkeletons();

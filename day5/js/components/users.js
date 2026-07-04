@@ -39,6 +39,7 @@ export function renderUsers() {
 
     return userCard;
   }
+  
   function loadUsers(url = "https://jsonplaceholder.typicode.com/users") {
     loadSkeletons();
     fetchJson(url).then(

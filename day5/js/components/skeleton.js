@@ -7,6 +7,7 @@ export function loadSkeletons() {
     skeletonPlaceholder.classList.remove("hidden");
   });
 }
+
 export function removeSkeletons() {
   const skeletonPlaceholders = document.querySelectorAll(
     ".skeletonPlaceholder",

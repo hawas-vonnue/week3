@@ -7,7 +7,7 @@
   margin: 1em;
 }
 
-.container article h3 {
+.service-card h3 {
   padding: 0.5em;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .hero {
-  width: 100vw;
+  width: 100%;
   height: 50vh;
   background-image:
     linear-gradient(
@@ -106,7 +106,8 @@ dl .description {
   margin-right: 15vw;
 }
 
-article > h2 {
+article > h2,
+.service-card > h2 {
   text-align: center;
   margin-bottom: 1em;
 }
@@ -134,7 +135,7 @@ article > h2 {
   margin-top: 1em;
 }
 
-.container article {
+.service-card {
   display: flex;
   flex-direction: column;
   padding: 1.5em;
@@ -142,7 +143,7 @@ article > h2 {
   transition: position 300ms ease;
 }
 
-.container article:hover {
+.service-card:hover {
   transform: translateY(-10px);
   border: solid var(--color-accent);
 }
@@ -240,7 +241,7 @@ img {
 
 .filter a {
   text-decoration: none;
-  border: solid black;
+  border: solid var(--color-text);
   padding: 0.5em;
   border-radius: 10px;
 }
@@ -378,6 +379,14 @@ a:hover {
   margin: 10px;
 }
 
+.toggle button {
+  padding: 4px;
+  border-radius: 8px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: solid var(--color-text);
+}
+
 #menu {
   display: none;
 }
@@ -419,10 +428,14 @@ span.highlight {
 
 .back-to-top {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  padding: 5px;
+  bottom: 20px;
+  right: 20px;
   z-index: 20;
   display: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 8px;
 }
 
 .image-overlay {
@@ -452,6 +465,9 @@ span.highlight {
   right: 10px;
   width: 20px;
   height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .faqSection {
@@ -490,6 +506,62 @@ span.highlight {
 .spinnerContainer {
   padding: 10px;
   display: none;
+}
+
+.recentPostsContainer {
+  padding: 1em;
+  margin: 1em;
+}
+
+.recentPosts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3em;
+  margin-top: 1em;
+}
+
+.recentPosts .post {
+  border: solid black;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skeleton {
+  background: linear-gradient(-45deg, #bebebe 40%, #666666 50%, #7a7a7a 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: skelton 1s infinite linear;
+  animation-direction: alternate;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.skeletonPlaceholder {
+  min-height: 40vh;
+}
+
+.retryButton {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.retryButton img {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes skelton {
+  to {
+    background-position-x: 0;
+  }
 }
 
 @keyframes rotate {

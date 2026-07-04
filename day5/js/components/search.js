@@ -2,6 +2,7 @@ export function searchFunction() {
   let searchInput = document.querySelector(".search input");
   let timer;
   let serviceCardsContainer = document.querySelector(".container");
+  
   function search() {
     const serviceCards = document.querySelectorAll(".container .service-card");
     let serviceCardsContainer = document.querySelector(".container");
