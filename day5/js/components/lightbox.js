@@ -80,7 +80,6 @@ export function lightBox() {
   const thresholdX = 30;
   let startX;
   overlay.addEventListener("touchstart", (event) => {
-    console.log("hello");
     startX = event.changedTouches[0].screenX;
   });
   overlay.addEventListener("touchend", (event) => {
