@@ -17,19 +17,41 @@ export function debounce(fn, time = 300) {
   }, time);
 }
 
-export function showToast(message, duration) {
+export function showToast(message, duration, type = "error") {
   const showToastElement = document.createElement("div");
   showToastElement.style.zIndex = "120";
   showToastElement.classList.add("showToast");
   const toastContainerElement = document.createElement("div");
   toastContainerElement.classList.add("toastContainer");
   const imageElement = document.createElement("img");
-  imageElement.src =
-    "https://img.icons8.com/?size=100&id=43736&format=png&color=000000";
-  const messageElement = document.createElement("span");
-  messageElement.textContent = message;
   const progressBarElement = document.createElement("div");
   progressBarElement.classList.add("progressBar");
+  if (type === "warning") {
+    imageElement.src =
+      "https://img.icons8.com/?size=100&id=781qLOihKEEg&format=png&color=000000";
+    progressBarElement.style.border = "solid yellow";
+    showToastElement.style.backgroundColor = "#ffffdd";
+  }
+  if (type === "info") {
+    imageElement.src =
+      "https://img.icons8.com/?size=100&id=FJjsgnE4CWTg&format=png&color=000000";
+    progressBarElement.style.border = "solid blue";
+    showToastElement.style.backgroundColor = "#ADD8E6";
+  }
+  if (type === "error") {
+    imageElement.src =
+      "https://img.icons8.com/?size=100&id=43735&format=png&color=000000";
+    progressBarElement.style.border = "solid red";
+    showToastElement.style.backgroundColor = "#FF474C";
+  }
+  if (type === "success") {
+    imageElement.src =
+      "https://img.icons8.com/?size=100&id=43711&format=png&color=000000";
+    progressBarElement.style.border = "solid green";
+    showToastElement.style.backgroundColor = "#90EE90";
+  }
+  const messageElement = document.createElement("span");
+  messageElement.textContent = message;
   toastContainerElement.appendChild(imageElement);
   toastContainerElement.appendChild(messageElement);
   showToastElement.appendChild(toastContainerElement);
@@ -63,7 +85,6 @@ export function showToast(message, duration) {
         bottom: 0;
         left: 0;
         width: 0%;
-        border: solid red;
         animation: progress ${duration}s ease-in ;
       }
       .showToast img {

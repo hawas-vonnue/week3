@@ -59,10 +59,15 @@ window.onload = (event) => {
         let flag = formValidator.validateAll();
         submitButton.style.display = "revert";
         spinner.style.display = "none";
-        if (flag === 1) showToast("Error", 7);
-        else showToast("success", 7);
-
-        form.reset();
+        if (flag === 1) showToast("Error", 7, "error");
+        else {
+          showToast("success", 7, "success");
+          form.reset();
+          const fields = form.querySelectorAll("input,textarea");
+          fields.forEach((field) => {
+            field.classList.remove("is-valid");
+          });
+        }
       }, 1500);
     });
   }
