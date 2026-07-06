@@ -266,8 +266,8 @@ img {
     text-align: center;
 }
 
-.contact-form {
-    margin: 1em;
+fieldset {
+    padding: 6px;
 }
 
 .field {
@@ -279,8 +279,9 @@ img {
 
 .field label {
     position: absolute;
-    top: 17px;
+    top: 13px;
     left: 20px;
+    margin-bottom: 2px;
     transition: all 300ms ease;
     font-size: smaller;
     font-weight: 200;
@@ -376,15 +377,32 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0;
+}
+
+.toggle img {
+    width: 30px;
+    height: 30px;
 }
 
 .toggle button {
     padding: 4px;
-    border-radius: 8px;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    border: solid var(--color-text);
+    background: none;
+    border: none;
+}
+
+form {
+    margin: 3em;
+}
+
+.form button {
+    padding: 2px;
+    background: none;
+    border-radius: 6px;
+}
+
+.toggle button span {
+    display: none;
 }
 
 #menu {
@@ -398,13 +416,16 @@ a:hover {
 }
 
 .drawer {
-    display: flex;
     flex-direction: column;
     gap: 4px;
     padding-left: 4px;
     padding-top: 4px;
     background-color: var(--color-secondary);
     display: none;
+    position: fixed;
+    width: 100%;
+    margin-top: -5px;
+    z-index: 150;
 }
 
 .search {
@@ -556,6 +577,10 @@ span.highlight {
 .retryButton img {
     width: 30px;
     height: 30px;
+}
+
+.open {
+    display: flex;
 }
 
 @keyframes skelton {

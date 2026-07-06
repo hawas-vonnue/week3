@@ -8,32 +8,33 @@
     </head>
     <body>
         <header>
-            <button id="menu">
+            <div id="menu">
                 <img
                     src="https://img.icons8.com/?size=100&id=s1My9x8dhHDj&format=png&color=000000"
                     alt="hamburger-button"
                 />
-            </button>
+            </div>
             <nav>
                 <a href="./index.html">Home</a>
                 <a href="./about.html" aria-current="page">About</a>
-                <a href="./services.html">Services page</a>
+                <a href="./services.html">Services Page</a>
                 <a href="./team.html">Team Page</a>
                 <a href="./contact.html">Contact</a>
             </nav>
+            <div class="toggle">
+                <button id="checkbox" aria-pressed="false">
+                    <span>toggle dark mode</span>
+                    <img alt="moon logo" />
+                </button>
+            </div>
         </header>
         <main>
             <div class="drawer" aria-expanded="false">
                 <a href="./index.html">Home</a>
                 <a href="./about.html" aria-current="page">About</a>
-                <a href="./services.html">Services page</a>
+                <a href="./services.html">Services Page</a>
                 <a href="./team.html">Team Page</a>
                 <a href="./contact.html">Contact</a>
-            </div>
-            <div class="toggle">
-                <button id="checkbox" aria-pressed="false">
-                    toggle dark theme
-                </button>
             </div>
             <div class="hero">
                 <h1>About Essentials</h1>

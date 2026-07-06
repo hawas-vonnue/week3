@@ -27,17 +27,16 @@
     header nav {
         display: none;
     }
+
     #menu {
         display: inline;
         margin: 8px;
     }
+
     header {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-    }
-    .drawer.open {
-        display: flex;
     }
 }
 

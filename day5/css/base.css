@@ -70,4 +70,11 @@ a {
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    flex: 1;
 }
