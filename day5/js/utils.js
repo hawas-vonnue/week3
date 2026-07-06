@@ -1,74 +1,74 @@
 export async function fetchJson(url, options) {
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error("Error while fetching");
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error("Error while fetching");
+        }
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        throw new Error(error);
     }
-    const responseJson = await response.json();
-    return responseJson;
-  } catch (error) {
-    throw new Error(error);
-  }
 }
 
 export function debounce(fn, time = 300) {
-  setTimeout(() => {
-    fn();
-  }, time);
+    setTimeout(() => {
+        fn();
+    }, time);
 }
 
 export function createRetryButton() {
-  const retryButton = document.createElement("button");
-  retryButton.classList.add("retryButton");
-  retryButton.innerHTML = `<img src="https://img.icons8.com/?size=100&id=HLFOo5Y8dcQq&format=png&color=000000" alt="retry" width="30" height="30"> `;
-  return retryButton;
+    const retryButton = document.createElement("button");
+    retryButton.classList.add("retryButton");
+    retryButton.innerHTML = `<img src="https://img.icons8.com/?size=100&id=HLFOo5Y8dcQq&format=png&color=000000" alt="retry" width="30" height="30"> `;
+    return retryButton;
 }
 
 export function showToast(message, duration, type = "error") {
-  const toasts = document.querySelectorAll(".showToast");
-  toasts.forEach((toast) => {
-    toast.remove();
-  });
-  const showToastElement = document.createElement("div");
-  showToastElement.style.zIndex = "120";
-  showToastElement.classList.add("showToast");
-  const toastContainerElement = document.createElement("div");
-  toastContainerElement.classList.add("toastContainer");
-  const imageElement = document.createElement("img");
-  const progressBarElement = document.createElement("div");
-  progressBarElement.classList.add("progressBar");
-  if (type === "warning") {
-    imageElement.src =
-      "https://img.icons8.com/?size=100&id=781qLOihKEEg&format=png&color=000000";
-    progressBarElement.style.border = "solid yellow";
-    showToastElement.style.backgroundColor = "#ffffdd";
-  }
-  if (type === "info") {
-    imageElement.src =
-      "https://img.icons8.com/?size=100&id=FJjsgnE4CWTg&format=png&color=000000";
-    progressBarElement.style.border = "solid blue";
-    showToastElement.style.backgroundColor = "#ADD8E6";
-  }
-  if (type === "error") {
-    imageElement.src =
-      "https://img.icons8.com/?size=100&id=43735&format=png&color=000000";
-    progressBarElement.style.border = "solid red";
-    showToastElement.style.backgroundColor = "#FF474C";
-  }
-  if (type === "success") {
-    imageElement.src =
-      "https://img.icons8.com/?size=100&id=43711&format=png&color=000000";
-    progressBarElement.style.border = "solid green";
-    showToastElement.style.backgroundColor = "#90EE90";
-  }
-  const messageElement = document.createElement("span");
-  messageElement.textContent = message;
-  toastContainerElement.appendChild(imageElement);
-  toastContainerElement.appendChild(messageElement);
-  showToastElement.appendChild(toastContainerElement);
-  showToastElement.appendChild(progressBarElement);
-  const styleElement = document.createElement("style");
-  styleElement.textContent = `  .showToast {
+    const toasts = document.querySelectorAll(".showToast");
+    toasts.forEach((toast) => {
+        toast.remove();
+    });
+    const showToastElement = document.createElement("div");
+    showToastElement.style.zIndex = "120";
+    showToastElement.classList.add("showToast");
+    const toastContainerElement = document.createElement("div");
+    toastContainerElement.classList.add("toastContainer");
+    const imageElement = document.createElement("img");
+    const progressBarElement = document.createElement("div");
+    progressBarElement.classList.add("progressBar");
+    if (type === "warning") {
+        imageElement.src =
+            "https://img.icons8.com/?size=100&id=781qLOihKEEg&format=png&color=000000";
+        progressBarElement.style.border = "solid yellow";
+        showToastElement.style.backgroundColor = "#ffffdd";
+    }
+    if (type === "info") {
+        imageElement.src =
+            "https://img.icons8.com/?size=100&id=FJjsgnE4CWTg&format=png&color=000000";
+        progressBarElement.style.border = "solid blue";
+        showToastElement.style.backgroundColor = "#ADD8E6";
+    }
+    if (type === "error") {
+        imageElement.src =
+            "https://img.icons8.com/?size=100&id=43735&format=png&color=000000";
+        progressBarElement.style.border = "solid red";
+        showToastElement.style.backgroundColor = "#FF474C";
+    }
+    if (type === "success") {
+        imageElement.src =
+            "https://img.icons8.com/?size=100&id=43711&format=png&color=000000";
+        progressBarElement.style.border = "solid green";
+        showToastElement.style.backgroundColor = "#90EE90";
+    }
+    const messageElement = document.createElement("span");
+    messageElement.textContent = message;
+    toastContainerElement.appendChild(imageElement);
+    toastContainerElement.appendChild(messageElement);
+    showToastElement.appendChild(toastContainerElement);
+    showToastElement.appendChild(progressBarElement);
+    const styleElement = document.createElement("style");
+    styleElement.textContent = `  .showToast {
         box-sizing: border-box;
         position: fixed;
         top: 60px;
@@ -126,7 +126,7 @@ export function showToast(message, duration, type = "error") {
           width: 0%;
         }
       }`;
-  const head = document.head;
-  head.appendChild(styleElement);
-  document.body.prepend(showToastElement);
+    const head = document.head;
+    head.appendChild(styleElement);
+    document.body.prepend(showToastElement);
 }
