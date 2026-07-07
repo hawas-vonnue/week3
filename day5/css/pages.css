@@ -3,6 +3,10 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .recentPosts {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .values {
     grid-template-columns: 1fr 1fr;
   }
@@ -27,18 +31,22 @@
     display: inline;
     margin: 8px;
   }
-  header{
+  header {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
   }
-  .drawer.open{
+  .drawer.open {
     display: flex;
   }
 }
 
 @media screen and (width<=480px) {
   .features {
+    grid-template-columns: 1fr;
+  }
+
+  .recentPosts {
     grid-template-columns: 1fr;
   }
 

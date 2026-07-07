@@ -7,6 +7,10 @@ import { progressBar } from "./components/progress.js";
 import { FormValidator } from "./components/validator.js";
 import { rules } from "./components/validator.js";
 import { showToast } from "./utils.js";
+import { fetchPosts } from "./components/posts.js";
+import { searchFunction } from "./components/search.js";
+import { renderUsers } from "./components/users.js";
+import { renderRecentPosts } from "./components/recentPosts.js";
 
 window.onload = (event) => {
   let toggleElement = document.querySelector("#checkbox");
@@ -21,10 +25,11 @@ window.onload = (event) => {
     accordion(questionElement, answerElement);
   });
   if (window.location.href.includes("team.html")) {
-    lightBox();
+    renderUsers();
   }
   if (window.location.href.includes("index.html")) {
     scrollAnimation();
+    renderRecentPosts();
   }
   const backToTopButton = document.querySelector(".back-to-top");
   window.addEventListener("scroll", () => {
@@ -70,5 +75,9 @@ window.onload = (event) => {
         }
       }, 1500);
     });
+  }
+  if (window.location.href.includes("services.html")) {
+    fetchPosts();
+    searchFunction();
   }
 };

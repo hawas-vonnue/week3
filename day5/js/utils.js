@@ -17,7 +17,18 @@ export function debounce(fn, time = 300) {
   }, time);
 }
 
+export function createRetryButton() {
+  const retryButton = document.createElement("button");
+  retryButton.classList.add("retryButton");
+  retryButton.innerHTML = `<img src="https://img.icons8.com/?size=100&id=HLFOo5Y8dcQq&format=png&color=000000" alt="retry" width="30" height="30"> `;
+  return retryButton;
+}
+
 export function showToast(message, duration, type = "error") {
+  const toasts = document.querySelectorAll(".showToast");
+  toasts.forEach((toast) => {
+    toast.remove();
+  });
   const showToastElement = document.createElement("div");
   showToastElement.style.zIndex = "120";
   showToastElement.classList.add("showToast");

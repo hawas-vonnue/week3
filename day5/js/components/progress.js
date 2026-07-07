@@ -5,7 +5,9 @@ export function progressBar(pageName) {
   progressBar.style.top = "0px";
   progressBar.style.left = "0px";
   progressBar.style.height = "4px";
+  progressBar.style.zIndex = "150";
   progressBar.style.backgroundColor = "red";
+
   function updateProgressBar() {
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const progress = Math.floor((scrollY / maxScroll) * 100);
